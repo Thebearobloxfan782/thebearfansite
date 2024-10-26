@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/icon.png">
+  <title>Thebearobloxfan782's ARG Site</title>
+  <style>
+    body {
+      background-color: #0a0a0a;
+      color: #eaeaea;
+      font-family: 'Courier New', Courier, monospace;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    header, footer {
+      text-align: center;
+    }
+    h1 {
+      font-size: 3rem;
+      letter-spacing: 5px;
+      margin: 30px 0;
+    }
+    .input-container {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .password-input {
+      padding: 10px;
+      font-size: 1.2rem;
+      border: 2px solid #eaeaea;
+      background-color: #000;
+      color: #eaeaea;
+    }
+    .password-input:focus {
+      outline: none;
+      border-color: #ff0000;
+    }
+    .show-password-button {
+      background-color: #000;
+      color: #eaeaea;
+      border: 2px solid #eaeaea;
+      padding: 10px 15px;
+      cursor: pointer;
+      font-size: 1.2rem;
+      transition: 0.3s;
+      margin-left: 10px;
+    }
+    .show-password-button:hover {
+      background-color: #eaeaea;
+      color: #0a0a0a;
+    }
+    .message {
+      display: none;
+      margin-top: 50px;
+      text-align: center;
+      color: #ff0000;
+      font-size: 1.5rem;
+    }
+    footer {
+      position: absolute;
+      bottom: 10px;
+      width: 100%;
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.5);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Thebearobloxfan782's Site!</h1>
+  </header>
+
+  <div class="input-container">
+    <input type="password" class="password-input" placeholder="Enter Password, Mate!" id="password" onkeypress="checkPassword(event)">
+    <button class="show-password-button" onclick="togglePasswordVisibility()">Show</button>
+  </div>
+
+  <div id="msg-discovery" class="message">
+    <p>https://www.youtube.com/watch?v=-nudeOIcQu8</p>
+  </div>
+
+  <div id="msg-warmer" class="message">
+    <p>https://www.youtube.com/watch?v=TMwtqRFqKfE</p>
+  </div>
+
+  <div id="msg-red" class="message">
+    <img src="images/passwords/red.jpg" alt="boss">
+    <p class="subtitle">boss</p>
+  </div>
+
+  <div id="msg-aethos" class="message">
+    <img src="images/passwords/aethos.png" alt="boss">
+    <p class="subtitle">not canon, friend!</p>
+  </div>
+
+  <div id="msg-date" class="message">
+    <img src="images/passwords/dead.png" alt="boss">
+    <p class="subtitle">reported dead</p>
+  </div>
+
+  <footer>
+    <p>&copy; 2024 - Thebearobloxfan782.</p>
+  </footer>
+
+  <script>
+    const passwordMap = {
+      'discovery': 'msg-discovery',
+      'warmer': 'msg-warmer',
+      'abitofred': 'msg-red',
+      'aethos': 'msg-aethos', /*not canon goofsters!*/
+      '20241025': 'msg-date'
+    };
+
+    function checkPassword(event) {
+      if (event.key === 'Enter') {
+        const inputPassword = document.getElementById('password').value;
+        const messageId = passwordMap[inputPassword];
+        document.querySelectorAll('.message').forEach(msg => msg.style.display = 'none');
+        if (messageId) {
+          document.getElementById(messageId).style.display = 'block';
+        } else {
+          alert('Incorrect password. Please try again.');
+        }
+        document.getElementById('password').value = '';
+      }
+    }
+
+    function togglePasswordVisibility() {
+      const passwordInput = document.getElementById('password');
+      const currentType = passwordInput.getAttribute('type');
+      passwordInput.setAttribute('type', currentType === 'password' ? 'text' : 'password');
+    }
+  </script>
+
+</body>
+</html>
