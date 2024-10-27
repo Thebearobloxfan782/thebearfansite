@@ -65,6 +65,39 @@
       font-size: 0.9rem;
       color: rgba(255, 255, 255, 0.5);
     }
+    .changelog-button {
+      background-color: transparent;
+      color: rgba(255, 255, 255, 0.5);
+      border: none;
+      font-size: 0.9rem;
+      cursor: pointer;
+      text-decoration: underline;
+      margin-left: -13px;
+    }
+    .changelog-button:hover {
+      color: #eaeaea;
+    }
+    .changelog-popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #1a1a1a;
+      padding: 20px;
+      border: 2px solid #eaeaea;
+      width: 300px;
+      max-width: 80%;
+      text-align: center;
+    }
+    .close-popup {
+      background-color: #eaeaea;
+      color: #0a0a0a;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
   </style>
 </head>
 <body>
@@ -102,15 +135,25 @@
   </div>
 
   <footer>
-    <p>&copy; 2024 - Thebearobloxfan782.</p>
+    <p>&copy; 2024 - Thebearobloxfan782.
+      <button class="changelog-button" onclick="showChangelog()">Changelog</button>
+    </p>
   </footer>
+
+  <div id="changelog-popup" class="changelog-popup">
+    <h2>Changelog</h2>
+    <ul style="list-style: none; padding: 0;">
+      <li>v1.0 - Initial Release!</li>
+    </ul>
+    <button class="close-popup" onclick="closeChangelog()">Close</button>
+  </div>
 
   <script>
     const passwordMap = {
       'discovery': 'msg-discovery',
       'warmer': 'msg-warmer',
       'abitofred': 'msg-red',
-      'aethos': 'msg-aethos', /*not canon goofsters!*/
+      'aethos': 'msg-aethos',
       '20241025': 'msg-date'
     };
 
@@ -118,12 +161,15 @@
       if (event.key === 'Enter') {
         const inputPassword = document.getElementById('password').value;
         const messageId = passwordMap[inputPassword];
+
         document.querySelectorAll('.message').forEach(msg => msg.style.display = 'none');
+
         if (messageId) {
           document.getElementById(messageId).style.display = 'block';
         } else {
           alert('Incorrect password. Please try again.');
         }
+
         document.getElementById('password').value = '';
       }
     }
@@ -132,6 +178,14 @@
       const passwordInput = document.getElementById('password');
       const currentType = passwordInput.getAttribute('type');
       passwordInput.setAttribute('type', currentType === 'password' ? 'text' : 'password');
+    }
+
+    function showChangelog() {
+      document.getElementById('changelog-popup').style.display = 'block';
+    }
+
+    function closeChangelog() {
+      document.getElementById('changelog-popup').style.display = 'none';
     }
   </script>
 
